@@ -1,0 +1,20 @@
+{
+  "name": "cabasjeson",
+  "version": "1.0.0",
+  "main": "frame.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesoncabas9/CabasJeson.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jesoncabas9/CabasJeson/issues"
+  },
+  "homepage": "https://github.com/jesoncabas9/CabasJeson#readme",
+  "description": ""
+}
