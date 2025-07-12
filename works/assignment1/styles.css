@@ -1,0 +1,405 @@
+/* makes the scrolling through the page smoother  */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* this height sets the body to contain all the elements below and enables scrolling up and down  */
+    position: absolute;
+    height: 8250px;
+    /* the background image  */
+    background-image: url('bg.jpg');
+    /* the following properties sets the background image to cover the page, center,
+    disable repitition, and sets the image to be fixed to its position when a user is scrolling up or down  */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/* settings for an invisible line for bookmarking  */
+
+#gotop {
+    position: absolute;
+    top: 0px;
+    border: none;
+    width: 0px;
+}
+
+
+/* a red rectangle placed at the left side of the title  */
+
+.rectangle {
+    background-color: brown;
+    width: 30px;
+    height: 250px;
+    position: absolute;
+    top: 100px;
+    left: 75px;
+}
+
+
+/* settings for the title "The Top 10 All-Time Games of Lebron James"  */
+
+#title {
+    color: white;
+    font-size: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 80px;
+    margin-left: 10px;
+    line-height: 80px;
+}
+
+
+/* placement of the video in the page  */
+
+#vid {
+    top: 95px;
+    left: 1040px;
+    border-radius: 20px;
+    position: absolute;
+    border: 10px solid rgba(255, 215, 0, 0.4);
+    border-radius: 10px;
+    position: absolute;
+}
+
+
+/* settings for the button beneath the video */
+
+#ytbutton {
+    height: 40px;
+    width: 150px;
+    color: white;
+    font-size: 15px;
+    position: absolute;
+    top: 350px;
+    left: 1180px;
+    background: transparent;
+    border: 2px solid purple;
+    border-radius: 20px;
+}
+
+
+/* setting for all the descendants inside the ytbutton  */
+
+#ytbutton pre {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+}
+
+
+/* settings for the bookmark that redirects to the full article in the page  */
+
+#jumper1 {
+    position: absolute;
+    top: 312px;
+    left: 123px;
+    font-size: 21px;
+    text-decoration: underline;
+    color: white;
+    margin: 10px;
+}
+
+
+/* settings for the introduction before the top 10 games  */
+
+#intro {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    font-family: sans-serif;
+    height: 170px;
+    width: 1328px;
+    padding: 40px;
+    line-height: 35px;
+    margin-left: 50px;
+    margin-top: 390px;
+    background-color: rgba(127, 22, 101, 0.6);
+    border: 2px solid gold;
+    text-shadow: 2px 2px rgb(0, 0, 0);
+    border-radius: 20px;
+}
+
+
+/* settings for the transparent background behind the top 10 games  */
+
+.transpar {
+    position: absolute;
+    backdrop-filter: blur(20px);
+    height: 6380px;
+    width: 1410px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    top: 1000px;
+    left: 50px;
+    border-bottom-left-radius: 350px;
+    border-bottom-right-radius: 350px;
+}
+
+
+/* settings for all the child inside the div that has the class 'cline' */
+
+div>.cline {
+    height: 20px;
+    background: linear-gradient(to right, purple, yellow);
+    margin-top: 0px;
+    border-radius: 10px;
+}
+
+
+/* settings for all the opaque white background behind the top 10 games */
+
+.tops {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 580px;
+    width: 1370px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border: 1px gray;
+    border-radius: 20px;
+}
+
+
+/* settings for all the circle elements that contains numbers  */
+
+.circle {
+    position: relative;
+    top: 17px;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 0, 0, 0.293);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: white;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 20px;
+    z-index: 1;
+}
+
+
+/* settings for the top 10 titles beside the circled numbers  */
+
+#topstitle {
+    position: absolute;
+    top: 16.5px;
+    line-height: 95px;
+    text-align: center;
+    margin-top: 19px;
+    margin-left: 20px;
+    font-size: 35px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100px;
+    width: 1000px;
+    border: 2px solid gold;
+    border-radius: 100px;
+}
+
+
+/* settings for all the top 10 paragraphs  */
+
+#topsp {
+    color: white;
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin-inline: 50px;
+    text-align: justify;
+    padding-right: 400px;
+    left: 10px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    background-color: rgba(43, 43, 43, 0.437);
+    height: 290px;
+    width: 820px;
+    border: 2px solid rgba(255, 0, 0, 0.326);
+    border-radius: 10px;
+}
+
+
+/* settings for all the images at the rights side of the paragraphs  */
+
+#imgedit {
+    padding-top: 10px;
+    padding-right: 80px;
+    height: 320px;
+    width: 320px;
+    transform: translateZ(0);
+}
+
+
+/* settings for the word "Reference" at the bottom of the transparent background  */
+
+#ref {
+    margin-top: 6040px;
+    margin-left: 50px;
+    color: white;
+    font-size: 35px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+/* settings for the link under the reference  */
+
+#eyy {
+    top: 6160px;
+    position: absolute;
+    padding: 20px;
+    left: 440px;
+    font-size: 40px;
+    background-color: rgba(0, 0, 0, 0.509);
+    border: 3px solid white;
+    border-radius: 20px;
+}
+
+
+/* the following styles are settings for when the <a> links are interacted  */
+
+a:link {
+    color: gold;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: orange;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: purple;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: brown;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+
+/* changes the color of the general siblings of .circle that uses the <p> elements  */
+
+.circle~p {
+    color: white;
+}
+
+
+/* settings for the word "BSCpE 3C"  */
+
+#section {
+    position: absolute;
+    top: 80px;
+    color: white;
+    font-weight: bold;
+    font-size: 90px;
+    left: 150px;
+    text-shadow: 5px 5px black;
+    width: 600px;
+}
+
+
+/* sets the text-shadow for all the general siblings of #section that uses the element <pre>  */
+
+#section~pre {
+    text-shadow: 5px 5px black;
+}
+
+
+/* settings for the word "Group 3"  */
+
+.group3 {
+    color: white;
+    position: absolute;
+    top: 7500px;
+}
+
+
+/* settings for all the next siblings of #section that uses the element <pre>  */
+
+#section+pre {
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 185px;
+    left: 95px;
+    font-size: 70px;
+    font-weight: bold;
+}
+
+
+/* settings for all the descendants of .group3 that uses <em> elements  */
+
+.group3 em {
+    background-color: rgba(128, 0, 128, 0.252);
+    backdrop-filter: blur;
+    font-size: 30px;
+    position: absolute;
+    padding-right: 40px;
+    width: 432px;
+    top: 100px;
+    left: 1020px;
+    text-align: center;
+    font-family: system-ui;
+    border: 10px dotted gold;
+    border-top-left-radius: 200px;
+    border-bottom-left-radius: 200px;
+    text-align: right;
+    line-height: 12px;
+}
+
+
+/* hides the bullets from the list  */
+
+#glist {
+    list-style-type: none;
+}
+
+
+/* settings for hovering the list of members  */
+
+.group3 em:hover {
+    background-color: rgba(0, 0, 0, 0.558);
+    color: white;
+}
+
+
+/* settings for a bookmark that moves you at the top of the page  */
+
+#jumper2 {
+    position: absolute;
+    top: 8120px;
+    left: 1280px;
+}
+
+
+/* settings for the button of the jumper2  */
+
+#cusbutton {
+    width: 170px;
+    height: 70px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+
+/* settings for hovering the jumper2 button  */
+
+#cusbutton:hover {
+    background-color: white;
+    color: black;
+}

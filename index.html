@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Compilation</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.12/build/spline-viewer.js"></script>
+    <link rel="stylesheet" href="modal.css">
+</head>
+
+<body>
+
+    <!-- Greeting Texts -->
+    <div id="greet1" class="fade show">Hi, I'm Jeson E. Cabas</div>
+    <div id="greet2" class="fade">Welcome to the compilation of my Works</div>
+
+    <!-- Background animation -->
+    <div class="spline-hero">
+        <spline-viewer class="background" url="https://prod.spline.design/LEudKPr75VrVpu5z/scene.splinecode" background="transparent">
+        </spline-viewer>
+    </div>
+
+    <img src="gradient.png" id="gradient" alt="Gradient Background">
+
+    <div class="div" id="main-content">
+        <!-- Navigation Bar -->
+        <nav class="nav">
+            <div class="nav-left">
+                <img src="profile.jpg" alt="Profile" class="avatar">
+                <span class="portfolio-name">Jeson E. Cabas</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active" id="home-link">Home</a>
+
+                <!-- Dropdown for activities -->
+                <div class="dropdown">
+                    <a href="activities.html" class="dropbtn">Activities</a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="openFrame('works/activity1/activity1.html'); return false;">Activity 1</a>
+                        <a href="#" onclick="openFrame('works/activity2/activity2.html'); return false;">Activity 2</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown for assignments -->
+                <div class="dropdown">
+                    <a href="assignments.html" class="dropbtn">Assignments</a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="openFrame('works/assignment1/assignment1.html'); return false;">Assignment 1</a>
+                        <a href="#" onclick="openFrame('works/assignment2/assignment2.html'); return false;">Assignment 2</a>
+                        <a href="#" onclick="openFrame('works/assignment3/assignment3.html'); return false;">Assignment 3</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown for practical -->
+                <div class="dropdown">
+                    <a href="practicals.html" class="dropbtn">Practical</a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="openFrame('works/midterms/midterms.html'); return false;">Midterms</a>
+                    </div>
+                </div>
+                <a href="about.html">About</a>
+                <span class="nav-slider"></span>
+            </div>
+        </nav>
+
+        <!-- Title and Description -->
+        <div class="page-title">
+            <h1>Compilation <br> of Works</h1>
+            <h6>This project contains all the Activities, Assignments, and <br> Practicals throughout the semester of CPEN-106.</h6>
+        </div>
+
+        <!-- Slideshow of images -->
+        <div class="slideshow-container">
+            <button class="slide-btn prev">&#10094;</button>
+            <div class="slideshow-images">
+                <!-- Images will be loaded by JavaScript -->
+            </div>
+            <button class="slide-btn next">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Modal for full image -->
+    <div id="slideshow-modal" class="modal">
+        <span class="modal-close" id="modal-close">&times;</span>
+        <img class="modal-img" id="modal-img" src="" alt="Enlarged Photo">
+        <button class="modal-link-btn" id="modal-link-btn">View Page</button>
+    </div>
+
+    <!-- Modal iframe for opening activity in a modal -->
+    <div id="iframe-modal" class="modal">
+        <span class="modal-close" id="iframe-modal-close">&times;</span>
+        <iframe id="iframe-modal-frame" src="" frameborder="0" style="width:90vw; height:80vh; border-radius:12px;"></iframe>
+    </div>
+
+    <script src="frame.js"></script>
+
+    <!-- Greeting transition logic -->
+    <script>
+        const greet1 = document.getElementById('greet1');
+        const greet2 = document.getElementById('greet2');
+        const mainContent = document.getElementById('main-content');
+
+        // This function skips greetings and shows the main content immediately
+        function skipGreeting() {
+            greet1.style.display = 'none';
+            greet2.style.display = 'none';
+            mainContent.style.opacity = 1;
+        }
+
+        // Checks if greeting has already been shown before using sessionStorage
+        if (sessionStorage.getItem('skipGreeting')) {
+            skipGreeting();
+        } else {
+            // If not shown before, fade out greet1 and fade in greet2, then show main content
+            mainContent.style.opacity = 0;
+            setTimeout(() => {
+                greet1.classList.remove('show');
+                greet2.classList.add('show');
+            }, 2000);
+
+            setTimeout(() => {
+                greet2.classList.remove('show');
+                mainContent.style.transition = 'opacity 1s';
+                mainContent.style.opacity = 1;
+                sessionStorage.setItem('skipGreeting', 'true');
+            }, 4000);
+        }
+
+        // When Home link is clicked, remember to skip greeting next time
+        document.getElementById('home-link').addEventListener('click', function(e) {
+            sessionStorage.setItem('skipGreeting', 'true');
+        });
+    </script>
+
+    <!-- Navigation slider animation -->
+    <script>
+        const navLinks = document.querySelectorAll('.nav-links > a, .nav-links .dropbtn');
+        const navSlider = document.querySelector('.nav-slider');
+        let activeLink = document.querySelector('.nav-links > a.active') || document.querySelector('.nav-links .dropbtn.active');
+
+        // This function moves the slider bar below the selected nav item
+        function moveSliderTo(element) {
+            if (!element) return;
+            const rect = element.getBoundingClientRect();
+            const parentRect = element.closest('.nav-links').getBoundingClientRect();
+            navSlider.style.left = (rect.left - parentRect.left) + "px";
+            navSlider.style.width = rect.width + "px";
+        }
+
+        // Move the slider to the active link when page loads
+        moveSliderTo(activeLink);
+
+        // Add hover and click events to nav links
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', (e) => {
+                moveSliderTo(e.target);
+            });
+            link.addEventListener('focus', (e) => {
+                moveSliderTo(e.target);
+            });
+            link.addEventListener('mouseleave', () => {
+                moveSliderTo(activeLink);
+            });
+            link.addEventListener('blur', () => {
+                moveSliderTo(activeLink);
+            });
+            link.addEventListener('click', (e) => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                e.target.classList.add('active');
+                activeLink = e.target;
+                moveSliderTo(activeLink);
+            });
+        });
+
+        // Re-adjust slider position on window resize
+        window.addEventListener('resize', () => {
+            moveSliderTo(activeLink);
+        });
+    </script>
+
+    <!-- Slideshow with modal preview -->
+    <script>
+        const imagePaths = [
+            "slide1.png", "slide2.png", "slide3.png", "slide4.png", "slide5.png",
+            "slide6.png", "slide7.png", "slide8.png", "slide9.png", "slide10.png"
+        ];
+
+        const htmlLinks = [
+            "works/activity1/activity1.html", "works/activity2/activity2.html",
+            "works/assignment1/assignment1.html", "works/assignment1/assignment1.html",
+            "works/assignment2/assignment2.html", "works/assignment2/assignment2.html",
+            "works/assignment3/assignment3.html", "works/assignment3/assignment3.html",
+            "works/midterms/midterms.html", "works/midterms/midterms.html",
+        ];
+
+        let slideIndex = 0;
+        const slideshowImages = document.querySelector('.slideshow-images');
+        const prevBtn = document.querySelector('.slide-btn.prev');
+        const nextBtn = document.querySelector('.slide-btn.next');
+
+        // This function shows 4 slideshow images starting from current index
+        function showSlides() {
+            slideshowImages.innerHTML = '';
+            for (let i = 0; i < 4; i++) {
+                const img = document.createElement('img');
+                const idx = (slideIndex + i) % imagePaths.length;
+                img.src = imagePaths[idx];
+                img.alt = `Photo ${idx + 1}`;
+                img.style.cursor = "pointer";
+                img.addEventListener('click', () => openModal(idx)); // Opens modal on image click
+                slideshowImages.appendChild(img);
+            }
+        }
+
+        // Goes to previous image
+        prevBtn.addEventListener('click', () => {
+            slideIndex = (slideIndex - 1 + imagePaths.length) % imagePaths.length;
+            showSlides();
+        });
+
+        // Goes to next image
+        nextBtn.addEventListener('click', () => {
+            slideIndex = (slideIndex + 1) % imagePaths.length;
+            showSlides();
+        });
+
+        // Automatically move to next slide every 4 seconds
+        setInterval(() => {
+            slideIndex = (slideIndex + 1) % imagePaths.length;
+            showSlides();
+        }, 4000);
+
+        // Modal functionality
+        const modal = document.getElementById('slideshow-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalClose = document.getElementById('modal-close');
+        const modalLinkBtn = document.getElementById('modal-link-btn');
+        let currentModalIdx = 0;
+
+        // This function opens modal with the full image and activity link
+        function openModal(idx) {
+            currentModalIdx = idx;
+            modalImg.src = imagePaths[idx];
+            modalImg.alt = `Photo ${idx + 1}`;
+            modal.classList.add('show');
+
+            // If link is available, enable the button
+            if (htmlLinks[idx] && htmlLinks[idx] !== "#") {
+                modalLinkBtn.disabled = false;
+                modalLinkBtn.style.opacity = "1";
+                modalLinkBtn.onclick = () => openFrame(htmlLinks[idx]);
+            } else {
+                modalLinkBtn.disabled = true;
+                modalLinkBtn.style.opacity = "0.5";
+                modalLinkBtn.onclick = null;
+            }
+        }
+
+        // This closes the modal when the close (×) is clicked
+        modalClose.onclick = function() {
+            modal.classList.remove('show');
+        };
+
+        // Close modal if user clicks outside the image
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+
+        // Show first set of slides when the page loads
+        showSlides();
+    </script>
+
+</body>
+
+</html>

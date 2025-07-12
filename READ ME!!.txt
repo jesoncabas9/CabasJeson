@@ -1,0 +1,7 @@
+Before opening anything inside the "/compilation folder",
+make sure that the whole folder is extracted.
+
+-----------
+
+After extracting the whole folder, find the "main.html" file
+> run it on a broswer

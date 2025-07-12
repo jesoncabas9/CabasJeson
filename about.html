@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Assignment Compilation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .about-section {
+            max-width: 800px;
+            margin: 1rem auto 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24x rgba(0, 0, 0, 0.07);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .about-section img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #007bff33;
+        }
+        
+        .about-section h2 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .about-section p {
+            color: #444;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        body {
+            min-height: 97vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="gradient.png" id="gradient" alt="Gradient Background">
+    <div class="div" id="main-content">
+        <nav class="nav">
+            <div class="nav-left">
+                <img src="profile.jpg" alt="Profile" class="avatar">
+                <span class="portfolio-name">Jeson E. Cabas</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <div class="dropdown">
+                    <a href="activities.html" class="dropbtn">Activities</a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="openFrame('works/activity1/activity1.html'); return false;">Activity 1</a>
+                        <a href="#" onclick="openFrame('works/activity2/activity2.html'); return false;">Activity 2</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="assignments.html" class="dropbtn">Assignments</a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="openFrame('works/assignment1/assignment1.html'); return false;">Assignment 1</a>
+                        <a href="#" onclick="openFrame('works/assignment2/assignment2.html'); return false;">Assignment 2</a>
+                        <a href="#" onclick="openFrame('works/assignment3/assignment3.html'); return false;">Assignment 3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="practicals.html" class="dropbtn">Practical</a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="openFrame('works/midterms/midterms.html'); return false;">Midterms</a>
+                    </div>
+                </div>
+                <a href="about.html" class="active">About</a>
+                <span class="nav-slider"></span>
+            </div>
+        </nav>
+        <div class="page-title">
+            <h1>About</h1>
+            <h6>Learn more about Jeson E. Cabas and this compilation project.</h6>
+        </div>
+
+        <div class="about-section">
+            <img src="profile.jpg" alt="Jeson E. Cabas">
+            <h2>Jeson E. Cabas</h2>
+            <h4>BS Computer Engineering Student</h4>
+            <p>
+                Hello! I'm Jeson E. Cabas, a passionate Computer Engineering student at Cavite State Universit.<br> This website is a compilation of my activities, assignments, and practicals for the course CPEN 106.<br> I enjoy learning about web development,
+                programming, and technology in general.<br>
+                <br> Thank you for visiting my portfolio!
+            </p>
+        </div>
+        <!-- ...existing code... -->
+        <script>
+            // Nav slider logic (auto-highlight About)
+            const navLinks = document.querySelectorAll('.nav-links > a, .nav-links .dropbtn');
+            const navSlider = document.querySelector('.nav-slider');
+            let activeLink = document.querySelector('.nav-links > a.active');
+
+            function moveSliderTo(element) {
+                if (!element) return;
+                const rect = element.getBoundingClientRect();
+                const parentRect = element.closest('.nav-links').getBoundingClientRect();
+                navSlider.style.left = (rect.left - parentRect.left) + "px";
+                navSlider.style.width = rect.width + "px";
+            }
+
+            moveSliderTo(activeLink);
+
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', (e) => {
+                    moveSliderTo(e.target);
+                });
+                link.addEventListener('focus', (e) => {
+                    moveSliderTo(e.target);
+                });
+                link.addEventListener('mouseleave', () => {
+                    moveSliderTo(activeLink);
+                });
+                link.addEventListener('blur', () => {
+                    moveSliderTo(activeLink);
+                });
+                link.addEventListener('click', (e) => {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    e.target.classList.add('active');
+                    activeLink = e.target;
+                    moveSliderTo(activeLink);
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                moveSliderTo(activeLink);
+            });
+        </script>
+</body>
+
+</html>
